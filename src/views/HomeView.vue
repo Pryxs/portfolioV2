@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+import TheHomeSlider from '@/components/TheHomeSlider.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <TheHomeSlider />
   </main>
 </template>
