@@ -5,9 +5,96 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
   </head>
   <body>
+    <div class="loader">
+			<svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+				<path id="svg" fill="#151515" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+			</svg>
+
+			<div class="loader_heading">
+				<span class="loader_heading_item"></span>
+				<span class="loader_heading_item"></span>
+				<span class="loader_heading_item"></span>
+				<span class="loader_heading_item"></span>
+			</div>
+		</div>
+
     <div id="app"></div>
+
+    <script src="/loader.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+<style>
+  body { 
+    margin: 0;
+    overflow: hidden;
+  }
+    
+  span {
+    overflow: hidden;
+    display: block;
+  }
+
+  .loader {
+    position: absolute;
+    z-index: 50;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .loader svg {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 110vh;
+  }
+
+  .loader .loader_heading{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+  }
+
+  .loader .loader_heading_item {
+    border-radius: .3rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: #ddd;
+  }
+
+  .loader_heading_item:first-child{
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .loader_heading_item:nth-child(2){
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .loader_heading_item:nth-child(3){
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .loader_heading_item:nth-child(4){
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  @media (max-width: 767px) {
+    .loader svg {
+      width: 150vw;
+      margin-left: 0; 
+    }
+  }
+</style>
