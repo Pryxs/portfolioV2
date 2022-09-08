@@ -11,7 +11,7 @@
             @slideChange="onSlideChange"
             class="swiper"
         >
-            <swiper-slide class="swiper_slide">Slide 1</swiper-slide>
+            <swiper-slide class="swiper_slide"><ThreeCanvas/></swiper-slide>
             <swiper-slide class="swiper_slide">Slide 2</swiper-slide>
             <swiper-slide class="swiper_slide">Slide 3</swiper-slide>
 
@@ -24,8 +24,9 @@
 </template>
 
 <script>
-    import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Mousewheel } from 'swiper';
+    import { Navigation, EffectFade, Mousewheel } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue';
+    import ThreeCanvas from '@/components/ThreeCanvas.vue'
 
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -38,6 +39,7 @@
         components: {
             Swiper,
             SwiperSlide,
+            ThreeCanvas
         },
 
         setup() {

@@ -1,13 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { TroisJSVuePlugin } from 'troisjs';
 
-import './styles/css/reset.css'
+import './styles/css/reset.css';
 
 
-const app = createApp(App)
 
-app.use(router)
+const app = createApp(App);
 
-app.mount('#app')
+app.use(router);
+app.use(TroisJSVuePlugin);
+
+app.mount('#app');
 
