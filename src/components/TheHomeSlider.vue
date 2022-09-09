@@ -6,6 +6,7 @@
             :modules="modules" 
             :mousewheel="true"
             :navigation="navigation"
+            :pagination="{ clickable: true }"
             effect="fade"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
@@ -18,16 +19,16 @@
             <swiper-slide class="swiper_slide">Slide 2</swiper-slide>
             <swiper-slide class="swiper_slide">Slide 3</swiper-slide>
 
-            <div class="swiper_navigation">
+            <!-- <div class="swiper_navigation">
                 <button class="swiper_navigation_prev">PREV</button>
                 <button class="swiper_navigation_next">NEXT</button>
-            </div>
+            </div> -->
         </swiper>
     </div>
 </template>
 
 <script>
-    import { Navigation, EffectFade, Mousewheel } from 'swiper';
+    import { Navigation, EffectFade, Mousewheel, Pagination } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import ThreeCanvas from '@/components/ThreeCanvas.vue';
     import TheHeroSection from '@/components/TheHeroSection.vue';
@@ -58,7 +59,7 @@
             return {
                 onSwiper,
                 onSlideChange,
-                modules: [Mousewheel, Navigation, EffectFade],
+                modules: [Mousewheel, EffectFade, Pagination],
                 navigation: {
                     nextEl: '.swiper_navigation_next',
                     prevEl: '.swiper_navigation_prev',
@@ -96,13 +97,29 @@
                 }
             }
 
-            &_navigation{
-                @include absolute-vertical-center;
-                right: 0;
-                z-index: 20;
+            &-pagination{
                 display: flex;
                 flex-direction: column;
-                gap: 1em;
+                gap: 4rem;
+                right: 3rem;
+
+                &-bullet{
+                    background-color: #ddd;
+                    opacity: 1;
+                    position: relative;
+                    overflow: visible;
+
+                    &-active:after{
+                        content: " ";
+                        width: 24px;
+                        height: 24px;
+                        border: 2px solid #ddd;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: -10px;
+                        left: -10px;
+                    }
+                }
             }
         }
 
