@@ -14,10 +14,14 @@
         >
             <swiper-slide class="swiper_slide">
                 <TheHeroSection/>
-                <ThreeCanvas/>
+                <ThreeCanvasHero customRef="canvas1" color="rgba(0, 0, 0)"/>
             </swiper-slide>
-            <swiper-slide class="swiper_slide">Slide 2</swiper-slide>
-            <swiper-slide class="swiper_slide">Slide 3</swiper-slide>
+            <swiper-slide class="swiper_slide">
+                <ThreeCanvasMatui customRef="canvas2" color="rgba(0, 122, 204)"/>
+            </swiper-slide>
+            <swiper-slide class="swiper_slide">
+                <ThreeCanvasPhotobox customRef="canvas2" color="rgba(130, 74, 167)"/>
+            </swiper-slide>
 
             <!-- <div class="swiper_navigation">
                 <button class="swiper_navigation_prev">PREV</button>
@@ -30,8 +34,11 @@
 <script>
     import { Navigation, EffectFade, Mousewheel, Pagination } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import ThreeCanvas from '@/components/ThreeCanvas.vue';
+    import ThreeCanvasHero from '@/components/ThreeCanvas/ThreeCanvasHero.vue';
+    import ThreeCanvasMatui from '@/components/ThreeCanvas/ThreeCanvasMatui.vue';
+    import ThreeCanvasPhotobox from '@/components/ThreeCanvas/ThreeCanvasPhotobox.vue';
     import TheHeroSection from '@/components/TheHeroSection.vue';
+    import HomeSliderSection from '@/components/HomeSliderSection.vue';
 
 
     import 'swiper/css';
@@ -45,8 +52,11 @@
         components: {
             Swiper,
             SwiperSlide,
-            ThreeCanvas,
-            TheHeroSection
+            ThreeCanvasHero,
+            ThreeCanvasMatui,
+            ThreeCanvasPhotobox,
+            TheHeroSection,
+            HomeSliderSection
         },
 
         setup() {
@@ -104,20 +114,41 @@
                 right: 3rem;
 
                 &-bullet{
-                    background-color: #ddd;
+                    background-color: transparent;
                     opacity: 1;
                     position: relative;
                     overflow: visible;
+                    padding: 1em;
 
-                    &-active:after{
+                    &:before{
+                        content: " ";
+                        width: 8px;
+                        height: 8px;
+                        background-color: #ddd;
+                        border-radius: 50%;
+                        @include absolute-center;
+                        opacity: .7;
+                    }
+
+                    &:after{
                         content: " ";
                         width: 24px;
                         height: 24px;
                         border: 2px solid #ddd;
                         border-radius: 50%;
-                        position: absolute;
-                        top: -10px;
-                        left: -10px;
+                        @include absolute-center;
+                        opacity: 0;
+                        transition: .3s ease;
+                    }
+
+                    &:hover:after{
+                        opacity: .7;
+                    }
+
+                    &-active{
+                        &:after, &:before{
+                            opacity: 1;
+                        }
                     }
                 }
             }

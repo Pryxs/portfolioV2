@@ -1,5 +1,6 @@
 <template>
-    <div ref="canvas"></div>
+    <div :ref="this.customRef">
+    </div>
 </template>
 
 <script>
@@ -22,6 +23,8 @@ let counter;
 let customEffect;
 
 export default {
+    props: ['color', 'customRef'],
+
     data: function() {
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera( 40, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -39,7 +42,8 @@ export default {
         customEffect = {
             uniforms: {
                 "tDiffuse": { value: null },
-                "amount": { value: counter }
+                "amount": { value: counter },
+                "customColor": { value: new THREE.Color(this.color)}            
             },
             vertexShader: customVertexShader,
             fragmentShader: customFragmentShader
@@ -48,10 +52,13 @@ export default {
         customPass = new ShaderPass(customEffect);
         customPass.renderToScreen = true;
         composer.addPass(customPass);  
+
+        return{
+            
+        }
     },
     mounted: function() {
-        console.log(this.$refs.canvas)
-        this.$refs.canvas.appendChild(renderer.domElement)
+        this.$refs[this.customRef].appendChild(renderer.domElement)
         window.addEventListener( 'resize', this.onWindowResize, false );
         this.animate()
     },

@@ -6,7 +6,7 @@ import CustomCursor from '@/components/CustomCursor.vue'
 
 <template>
   <main>
-    <CustomCursor/>
     <TheHomeSlider />
+    <CustomCursor hoverClass="swiper-pagination-bullet"/>
   </main>
 </template>

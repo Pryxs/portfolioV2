@@ -1,104 +1,120 @@
 <template>
     <div class="custom-cursor">
-      <div id="cursor-big" class="custom-cursor__ball custom-cursor__ball--big"></div>
-      <div id="cursor-small" class="custom-cursor__ball custom-cursor__ball--small"></div>
+        <div id="cursor_ring" class="custom-cursor_element -ring"></div>
+        <div id="cursor_ball" class="custom-cursor_element -ball"></div>
     </div>
-  </template>
-  
-  <script>
+</template>
+
+<script>
     import gsap from "gsap";
-  
+
     export default {
-      props: {
-        hoverClass: {
-          type: String,
-          default: 'cursor-hover'
-        }
-      },
+        props: {
+            hoverClass: {
+                type: String,
+                default: 'cursor-hover'
+            }
+        },
       mounted () {
-        const cursorBig = document.getElementById('cursor-big'),
-              cursorSmall = document.getElementById('cursor-small'),
+        const cursorRing = document.getElementById('cursor_ring'),
+              cursorBall = document.getElementById('cursor_ball'),
               links = document.getElementsByTagName("a"),
               withClassHover = document.getElementsByClassName(this.hoverClass),
               withHover = [...links, ...withClassHover];
   
+          console.log(withClassHover)
+          console.log(withHover)
+
         // Event Listeners
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mousedown", onMouseHover);
         document.addEventListener("mouseup", onMouseHoverOut);
         document.addEventListener("mouseenter", () => {
-          cursorBig.style.opacity = 1;
-          cursorSmall.style.opacity = 1;
+          cursorRing.style.opacity = 1;
+          cursorBall.style.opacity = 1;
         });
         document.addEventListener("mouseleave", () => {
-          cursorBig.style.opacity = 0;
-          cursorSmall.style.opacity = 0;
+          cursorRing.style.opacity = 0;
+          cursorBall.style.opacity = 0;
         });
-        withHover.forEach((element) => {
+        for (const element of withHover) {
           element.addEventListener("mouseover", onMouseHover);
           element.addEventListener("mouseout", onMouseHoverOut);
-        })
+        }
+
   
         // Event Handlers
         function onMouseMove(e) {
-          cursorSmall.style.opacity = 1;
-          gsap.to(cursorBig, 0.4, {
+          cursorBall.style.opacity = 1;
+          gsap.to(cursorRing, 0.4, {
             x: e.clientX - 18,
             y: e.clientY - 18
           });
-          gsap.to(cursorSmall, 0.1, {
+          gsap.to(cursorBall, 0.1, {
             x: e.clientX - 4,
             y: e.clientY - 4
           });
         }
-        function onMouseHover() {
-          gsap.to(cursorBig, 0.3, {
-            scale: 3
-          });
+        function onMouseHover(e) {
+          if(e.target.classList.contains('swiper-pagination-bullet')){
+            gsap.to(cursorRing, 0, {
+              opacity: 0
+            })
+          } else {
+            gsap.to(cursorRing, 0.3, {
+              scale: 1.5
+            });
+          }
         }
-        function onMouseHoverOut() {
-          gsap.to(cursorBig, 0.3, {
-            scale: 1
-          });
+        function onMouseHoverOut(e) {
+          if(e.target.classList.contains('swiper-pagination-bullet')){
+            gsap.to(cursorRing, 0, {
+              opacity: 1
+            });
+        
+          } else {
+            gsap.to(cursorRing, 0.3, {
+              scale: 1
+            });
+          }
         }
       }
     };
   </script>
   
-  <style>
-    @media screen and (min-width:1100px) {
+  <style lang="scss">
+    /* @media screen and (min-width:1100px) { */
       * {
         cursor: none !important;
       }
   
-      .custom-cursor__ball {
+      .custom-cursor_element {
         position: fixed;
         top: 0;
         left: 0;
-        mix-blend-mode: difference;
+        /* mix-blend-mode: difference; */
         z-index: 99999;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.5s ease;
-      }
-  
-      .custom-cursor__ball--big {
-        content: "";
-        width: 35px;
-        height: 35px;
-        background: white;
-        border-radius: 50%;
-        z-index: 50;
-      }
-  
-      .custom-cursor__ball--small {
-        content: "";
-        width: 6px;
-        height: 6px;
-        background: #f1515c;
-        border-radius: 50%;
-        z-index: 50;
 
+        &.-ring{
+          content: "";
+          width: 35px;
+          height: 35px;
+          border: 2px solid $text-color;
+          border-radius: 50%;
+          z-index: 50;
+        }
+
+        &.-ball{
+          content: "";
+          width: 6px;
+          height: 6px;
+          background: $text-color;
+          border-radius: 50%;
+          z-index: 50;
+        }
       }
-    }
+    /* } */
   </style>
