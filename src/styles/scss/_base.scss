@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,500;1,500&display=swap');
 
 body *{
     color: $text-color;
@@ -10,5 +11,16 @@ body *{
         font-family: 'Prompt', sans-serif;
         font-weight: 600;
     }
-}
+
+    h2{
+        font-size: 80px;
+    }
+
+    h3{
+        font-size: 32px;
+        font-family: 'Trirong', serif;
+        font-weight: 500;
+        font-style: italic;
+    }
+}   
 

@@ -47,8 +47,8 @@
         function onMouseMove(e) {
           cursorBall.style.opacity = 1;
           gsap.to(cursorRing, 0.4, {
-            x: e.clientX - 18,
-            y: e.clientY - 18
+            x: e.clientX - 20,
+            y: e.clientY - 20
           });
           gsap.to(cursorBall, 0.1, {
             x: e.clientX - 4,
@@ -56,27 +56,25 @@
           });
         }
         function onMouseHover(e) {
-          if(e.target.classList.contains('swiper-pagination-bullet')){
             gsap.to(cursorRing, 0, {
-              opacity: 0
+              opacity: 0,
             })
-          } else {
-            gsap.to(cursorRing, 0.3, {
-              scale: 1.5
-            });
-          }
+            gsap.to(cursorBall, 0, {
+              opacity: 0,
+              mixBlendMode: "difference",
+              scale: 2
+            })
         }
         function onMouseHoverOut(e) {
-          if(e.target.classList.contains('swiper-pagination-bullet')){
             gsap.to(cursorRing, 0, {
               opacity: 1
             });
-        
-          } else {
-            gsap.to(cursorRing, 0.3, {
+            gsap.to(cursorBall, 0, {
+              opacity: 0,
+              mixBlendMode: "normal",
               scale: 1
-            });
-          }
+
+            })
         }
       }
     };
@@ -102,7 +100,7 @@
           content: "";
           width: 35px;
           height: 35px;
-          border: 2px solid $text-color;
+          border: 1px solid $text-color;
           border-radius: 50%;
           z-index: 50;
         }

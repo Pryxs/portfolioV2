@@ -17,6 +17,7 @@
                 <ThreeCanvasHero customRef="canvas1" color="rgba(0, 0, 0)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
+                <HomeSliderSection/>
                 <ThreeCanvasMatui customRef="canvas2" color="rgba(0, 122, 204)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
