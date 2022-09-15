@@ -17,11 +17,20 @@
                 <ThreeCanvasHero customRef="canvas1" color="rgba(0, 0, 0)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <HomeSliderSection/>
+                <HomeSliderSection :infos="infosMatui" primaryColor="#007ACC" secondaryColor="#add8e6" :content="contentMatui">
+                    <template v-slot:image>
+                        <img :src="imageMatui">
+                    </template>
+                </HomeSliderSection>
                 <ThreeCanvasMatui customRef="canvas2" color="rgba(0, 122, 204)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <ThreeCanvasPhotobox customRef="canvas2" color="rgba(130, 74, 167)"/>
+                <HomeSliderSection :infos="infosMatui" primaryColor="#8340af" secondaryColor="#e1bbfa" :content="contentPhotobox">
+                    <template v-slot:image>
+                        <img :src="imagePhotobox">
+                    </template>
+                </HomeSliderSection>
+                <ThreeCanvasPhotobox customRef="canvas2" color="rgba(131, 64, 175)"/>
             </swiper-slide>
 
             <!-- <div class="swiper_navigation">
@@ -33,14 +42,17 @@
 </template>
 
 <script>
-    import { Navigation, EffectFade, Mousewheel, Pagination } from 'swiper';
+    import { EffectFade, Mousewheel, Pagination } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue';
+
     import ThreeCanvasHero from '@/components/ThreeCanvas/ThreeCanvasHero.vue';
     import ThreeCanvasMatui from '@/components/ThreeCanvas/ThreeCanvasMatui.vue';
     import ThreeCanvasPhotobox from '@/components/ThreeCanvas/ThreeCanvasPhotobox.vue';
     import TheHeroSection from '@/components/TheHeroSection.vue';
     import HomeSliderSection from '@/components/HomeSliderSection.vue';
 
+    import imageMatui from "@/assets/MATUI_MockUp.png"
+    import imagePhotobox from "@/assets/Photobox_MockUp.png"
 
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -50,6 +62,26 @@
     import 'swiper/css/mousewheel';
 
     export default {
+        data: function () {
+            return {
+                imageMatui: imageMatui,
+                imagePhotobox: imagePhotobox,
+                infosMatui: {title: "ANNEE", description: "2021"},
+                contentMatui : {
+                    num: ".01",
+                    title: "MATIU",
+                    subtitle : "Un outil d'aide à la décision",
+                    description : "Implémentation du diagramme MATUI, un arbre de décision version développer par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider les chercheurs en informatique à concevoir leurs expérimentations centrées humain."
+                },
+                contentPhotobox : {
+                    num: ".02",
+                    title: "Photobox",
+                    subtitle : "Une application de partage de photos",
+                    description : "Développement d'une application de partage de photos en direct dans le cadre d'un projet d'étude. Ce service propose à ses utilisateurs de partager l'instant présent lors d'événements et de les partager aux autres utilisateurs par l'intermédiaire d'un flux en direct."
+                }
+            }
+        },
+
         components: {
             Swiper,
             SwiperSlide,

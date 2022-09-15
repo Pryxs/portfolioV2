@@ -1,12 +1,13 @@
 <template>
-    <section class="project">
-        <img :src="image">
-        <div class="project_content">
-            <span class="project_content_num">.01</span>
-            <h2>MATUI</h2>
-            <h3>Un outil d'aide à la décision</h3>
-            <p>Implémentation du diagramme MATUI, un arbre de décision version développer par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider
-                les chercheurs en informatique à concevoir leurs expérimentations centrées humain.</p>
+    <section class="project"  :style="cssProps">
+        <div class="project_image">
+            <slot name="image"></slot>
+        </div>
+        <div v-if="content" class="project_content">
+            <span class="project_content_num">{{content.num}}</span>
+            <h2>{{content.title}}</h2>
+            <h3>{{content.subtitle}}</h3>
+            <p>{{content.description}}</p>
             <!-- <div class="project_content_infos">
                 <div v-for="info in infos" class="project_content_infos -item">
                     <span class="-item_title">{{info.title}}</span>
@@ -21,16 +22,16 @@
     </section>
 </template>
 
-<script>
-    import image from "@/assets/MATUI_MockUp.png"
-    
+<script> 
     export default {
-        data: function () {
-            return {
-                image: image,
-                infos: [
-                    {title: "ANNEE", description: "2021"}
-                ]
+        props: ['primaryColor', 'secondaryColor', 'content'],
+
+        computed: {
+            cssProps() {
+                return {
+                    '--primary-color': this.primaryColor,
+                    '--secondary-color': this.secondaryColor,
+                }
             }
         }
     }
@@ -39,25 +40,36 @@
 <style lang="scss">
     .project{
         position: absolute;
-        left: 45%;
+        left: 50%;
         transform: translateX(-50%);
         perspective: 800px;
         display: flex;
-        // align-items: center;
-        gap: 5em;
+        align-items: center;
+        gap: 1rem;
+        width: 80%;
+        max-width: 1100px;
 
-        img{
-            transform: rotate3d(0,1,0,15deg);
-            height: 400px;
-            width: auto;
+        &_image{
+            width: 50%;
+            perspective: 800px;
+            display: flex;
+            justify-content: center;
+
+            img{
+                transform: rotate3d(0,1,0,15deg);
+                width: auto;
+                height: 100%;
+                max-height: 450px;
+            }
         }
 
         &_content{
+            width: 50%;
             min-width: 500px;
 
             &_num{
                 font-size: 64px;
-                color: $matui-secondary-color;
+                color: var(--secondary-color);
                 font-family: 'Prompt', sans-serif;
                 margin-bottom: .5rem;
             }
@@ -67,7 +79,7 @@
 
             h3{
                 margin-bottom: 2rem;
-                color: $matui-secondary-color;
+                color:  var(--secondary-color);
             }
 
             p{
@@ -99,7 +111,7 @@
                 justify-content: end;
 
                 a{
-                    @include button($matui-primary-color);
+                    @include button(var(--primary-color));
                 }
             }
         }
