@@ -7,7 +7,10 @@
             <span class="hero_title_letter">e</span>
             <span class="hero_title_letter">n</span>
             <span class="hero_title_letter">t</span>
-            <span class="hero_title_letter -extend">i</span>
+            <span class="hero_title_letter -extend">
+                <span>i</span>
+                <span><ILetter/></span>
+            </span>
             <span class="hero_title_letter">n</span>
             <span class="hero_title_letter">&nbsp;</span>
             <span class="hero_title_letter">R</span>
@@ -39,11 +42,13 @@
 <script>
     import ScrollDown from '@/components/ScrollDown.vue'
     import PointGrid from '@/assets/point-grid.svg?component'
+    import ILetter from '@/assets/i.svg?component'
 
     export default {
         components: {
             ScrollDown,
-            PointGrid
+            PointGrid,
+            ILetter
         }
     }
 </script>
@@ -102,25 +107,73 @@
                 &.-extend{
                     position: relative;
                     overflow: visible;
-                    bottom: 21px;
-                    color: $primary-color;
+                    letter-spacing: .1em;
 
-                    &:after{
-                        content: " ";
-                        background: linear-gradient($primary-color, transparent);                        
-                        height: 60px;
-                        width: 20px;
-                        position: absolute;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        bottom: -39px;
+                    span:first-child{
+                        visibility: hidden;
                     }
+                    
+                    span:nth-child(2){
+                        position: absolute;
+                        top: -0.5em;
+                        left: -0.1em;
+                        transform: scale(.8);
+                    }    
+                    // position: relative;
+                    // overflow: visible;
+                    // bottom: 21px;
+                    // color: $primary-color;
+
+                    // &:after{
+                    //     content: " ";
+                    //     background: linear-gradient($primary-color, transparent);                        
+                    //     height: 60px;
+                    //     // width: 20px;
+                    //     width: .155em;
+                    //     position: absolute;
+                    //     left: 50%;
+                    //     transform: translateX(-50%);
+                    //     bottom: -38px;
+                    // }
                 }
 
                 &:hover{
                     color: $primary-color;
                     transition: .4s;
                 }
+            }
+
+            @media (max-width: 1350px) { 
+                font-size: 5.5rem;
+                &_letter{
+                    font-size: 6.5rem;
+
+                    &.-extend{
+                    
+                        span:nth-child(2){
+                            top: -0.76em;
+                            left: -0.15em;
+                            transform: scale(0.7);
+                        }    
+                    }
+                }     
+            }
+
+            @media (max-width: 1000px) { 
+                font-size: 4rem;
+                left: 2rem;
+                &_letter{
+                    font-size: 5rem;
+
+                    &.-extend{
+                    
+                        span:nth-child(2){
+                            top: -1.28em;
+                            left: -0.25em;
+                            transform: scale(0.5);
+                        }    
+                    }
+                }     
             }
         }
     }

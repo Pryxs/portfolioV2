@@ -115,5 +115,37 @@
                 }
             }
         }
+
+        @media (max-width: 1300px) { 
+            gap: 3rem;
+
+            &_image{
+                img{
+                    height: 375px;
+                }
+            }
+
+            &_content{
+                min-width: auto;
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 1000px) { 
+            flex-direction: column;
+            gap: 1rem;
+
+            &_image{
+                img{
+                    transform: rotate3d(0,0,0,0);
+                    height: 375px;
+                }
+            }
+
+            &_content{
+                min-width: auto;
+                width: 90%;
+            }
+        }
     }
 </style>
