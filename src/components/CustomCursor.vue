@@ -11,8 +11,8 @@
     export default {
         props: {
             hoverClass: {
-                type: String,
-                default: 'cursor-hover'
+                type: Array,
+                default: ['cursor-hover']
             }
         },
       mounted () {
@@ -21,9 +21,6 @@
               links = document.getElementsByTagName("a"),
               withClassHover = document.getElementsByClassName(this.hoverClass),
               withHover = [...links, ...withClassHover];
-  
-          console.log(withClassHover)
-          console.log(withHover)
 
         // Event Listeners
         document.addEventListener("mousemove", onMouseMove);

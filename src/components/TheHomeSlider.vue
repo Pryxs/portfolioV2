@@ -6,10 +6,10 @@
             :modules="modules" 
             :mousewheel="true"
             :navigation="navigation"
+            :keyboard="true"
+            :allowTouchMove="false"
             :pagination="{ clickable: true }"
             effect="fade"
-            @swiper="onSwiper"
-            @slideChange="onSlideChange"
             class="swiper"
         >
             <swiper-slide class="swiper_slide">
@@ -25,7 +25,7 @@
                 <ThreeCanvasMatui customRef="canvas2" color="rgba(0, 122, 204)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <HomeSliderSection :infos="infosMatui" primaryColor="#8340af" secondaryColor="#e1bbfa" :content="contentPhotobox">
+                <HomeSliderSection :infos="infosMatui" primaryColor="#8340af" secondaryColor="#e1bbfa" :content="contentPhotobox" :screens="screenPhotobox">
                     <template v-slot:image>
                         <img :src="imagePhotobox">
                     </template>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-    import { EffectFade, Mousewheel, Pagination } from 'swiper';
+    import { EffectFade, Mousewheel, Pagination, Keyboard } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue';
 
     import ThreeCanvasHero from '@/components/ThreeCanvas/ThreeCanvasHero.vue';
@@ -53,6 +53,12 @@
 
     import imageMatui from "@/assets/MATUI_MockUp.png"
     import imagePhotobox from "@/assets/Photobox_MockUp.png"
+
+    import imagePhotobox1 from "@/assets/Photobox_1.png"
+    import imagePhotobox2 from "@/assets/Photobox_2.png"
+    import imagePhotobox3 from "@/assets/Photobox_3.png"
+    import imagePhotobox4 from "@/assets/Photobox_4.png"
+    import imagePhotobox5 from "@/assets/Photobox_5.png"
 
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -78,7 +84,8 @@
                     title: "Photobox",
                     subtitle : "Une application de partage de photos",
                     description : "Développement d'une application de partage de photos en direct dans le cadre d'un projet d'étude. Ce service propose à ses utilisateurs de partager l'instant présent lors d'événements et de les partager aux autres utilisateurs par l'intermédiaire d'un flux en direct."
-                }
+                },
+                screenPhotobox: [imagePhotobox1, imagePhotobox2, imagePhotobox3, imagePhotobox4, imagePhotobox5]
             }
         },
 
@@ -93,16 +100,8 @@
         },
 
         setup() {
-            const onSwiper = (swiper) => {
-                console.log(swiper);
-            };
-            const onSlideChange = () => {
-                console.log('slide change');
-            };
             return {
-                onSwiper,
-                onSlideChange,
-                modules: [Mousewheel, EffectFade, Pagination],
+                modules: [Mousewheel, EffectFade, Pagination, Keyboard],
                 navigation: {
                     nextEl: '.swiper_navigation_next',
                     prevEl: '.swiper_navigation_prev',
@@ -116,7 +115,6 @@
     .swiper-container{
         width: 100vw;
         height: 100vh;
-        background: salmon;
 
         .swiper{
             height: 100%;
@@ -126,18 +124,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                &:first-child{
-                    background: red;
-                }
-
-                &:nth-child(2){
-                    background: darkcyan;
-                }
-
-                &:nth-child(3){
-                    background: lightcoral;
-                }
             }
 
             &-pagination{

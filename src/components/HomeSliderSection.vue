@@ -16,15 +16,25 @@
             </div> -->
 
             <div class="project_content_action">
-                <a>Voir plus</a>
+                <CustomModal>
+                    <div class="modal_content_screen" v-for="screen in screens">
+                        <img :src="screen">
+                    </div>
+                </CustomModal>
             </div>
         </div>
     </section>
 </template>
 
 <script> 
+    import CustomModal from '@/components/Modal.vue'
+
     export default {
-        props: ['primaryColor', 'secondaryColor', 'content'],
+        props: ['primaryColor', 'secondaryColor', 'content', 'screens'],
+
+        components:{
+            CustomModal
+        },
 
         computed: {
             cssProps() {
@@ -38,6 +48,11 @@
 </script>
 
 <style lang="scss">
+
+    .modal_content_screen:last-child{
+        padding-right: 30px;
+    }
+                
     .project{
         position: absolute;
         left: 50%;
