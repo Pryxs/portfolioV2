@@ -10,9 +10,9 @@
       @slideChange="onSlideChange"
       class="swiper"
     >
-      <swiper-slide class="test">Slide 1</swiper-slide>
-      <swiper-slide class="test">Slide 2</swiper-slide>
-      <swiper-slide class="test">Slide 3</swiper-slide>
+      <swiper-slide>Slide 1</swiper-slide>
+      <swiper-slide>Slide 2</swiper-slide>
+      <swiper-slide>Slide 3</swiper-slide>
     </swiper>
   </div>
 </template>
@@ -60,26 +60,7 @@
     background: salmon;
 
     .swiper{
-    height: 300px;
-  }
-
-  .test{
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-   .test:first-child{
-    background: $test;
-  }
-
-  .test:nth-child(2){
-    background: cyan;
-  }
-
-   .test:nth-child(3){
-    background: green;
-  }
+      height: 300px;
+    }
   }
 </style>
