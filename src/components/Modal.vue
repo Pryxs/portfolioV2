@@ -40,7 +40,7 @@
         methods:{
             horizontalScroll :function(event){
                 let modal = document.querySelector('.modal');
-                modal.scrollLeft += event.deltaY;
+                modal.scrollLeft += event.deltaY + 20;
             }
         }
     });
@@ -54,7 +54,7 @@
         font-size: 20px;
         text-align: center;
         color: black;
-        overflow-y: auto;
+        overflow-y: hidden;
 
         &::-webkit-scrollbar {
             height: 8px;

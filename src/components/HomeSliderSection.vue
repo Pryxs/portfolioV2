@@ -49,8 +49,16 @@
 
 <style lang="scss">
 
-    .modal_content_screen:last-child{
-        padding-right: 30px;
+    .modal_content_screen{
+        height: 70vh;
+
+        img{
+            height: 100%;
+        }
+
+        &:last-child{
+            padding-right: 30px;
+        }
     }
                 
     .project{
@@ -60,7 +68,7 @@
         perspective: 800px;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 4rem;
         width: 80%;
         max-width: 1100px;
 

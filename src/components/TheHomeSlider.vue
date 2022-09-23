@@ -17,7 +17,7 @@
                 <ThreeCanvasHero customRef="canvas1" color="rgba(0, 0, 0)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <HomeSliderSection :infos="infosMatui" primaryColor="#007ACC" secondaryColor="#add8e6" :content="contentMatui">
+                <HomeSliderSection :infos="infosMatui" primaryColor="#007ACC" secondaryColor="#add8e6" :content="contentMatui" :screens="screenMatui">
                     <template v-slot:image>
                         <img :src="imageMatui">
                     </template>
@@ -32,7 +32,14 @@
                 </HomeSliderSection>
                 <ThreeCanvasPhotobox customRef="canvas2" color="rgba(131, 64, 175)"/>
             </swiper-slide>
-
+            <swiper-slide class="swiper_slide">
+                <HomeSliderSection :infos="infosMatui" primaryColor="#059C80" secondaryColor="#B5FFD2" :content="contentHerobrine" :screens="screenHerobrine">
+                    <template v-slot:image>
+                        <img :src="imageHerobrine">
+                    </template>
+                </HomeSliderSection>
+                <ThreeCanvasHerobrine customRef="canvas2" color="rgba(5, 166, 135)"/>
+            </swiper-slide>
             <!-- <div class="swiper_navigation">
                 <button class="swiper_navigation_prev">PREV</button>
                 <button class="swiper_navigation_next">NEXT</button>
@@ -48,17 +55,31 @@
     import ThreeCanvasHero from '@/components/ThreeCanvas/ThreeCanvasHero.vue';
     import ThreeCanvasMatui from '@/components/ThreeCanvas/ThreeCanvasMatui.vue';
     import ThreeCanvasPhotobox from '@/components/ThreeCanvas/ThreeCanvasPhotobox.vue';
+    import ThreeCanvasHerobrine from '@/components/ThreeCanvas/ThreeCanvasHerobrine.vue';
     import TheHeroSection from '@/components/TheHeroSection.vue';
     import HomeSliderSection from '@/components/HomeSliderSection.vue';
 
     import imageMatui from "@/assets/MATUI_MockUp.png"
     import imagePhotobox from "@/assets/Photobox_MockUp.png"
+    import imageHerobrine from "@/assets/Herobrine_MockUp.png"
 
     import imagePhotobox1 from "@/assets/Photobox_1.png"
     import imagePhotobox2 from "@/assets/Photobox_2.png"
     import imagePhotobox3 from "@/assets/Photobox_3.png"
     import imagePhotobox4 from "@/assets/Photobox_4.png"
     import imagePhotobox5 from "@/assets/Photobox_5.png"
+
+    import imageMatui1 from "@/assets/MATUI_1.png"
+    import imageMatui2 from "@/assets/MATUI_2.png"
+    import imageMatui3 from "@/assets/MATUI_3.png"
+    import imageMatui4 from "@/assets/MATUI_4.png"
+    import imageMatui5 from "@/assets/MATUI_5.png"
+    import imageMatui6 from "@/assets/MATUI_6.png"
+
+    import imageHerobrine1 from "@/assets/Herobrine_1.png"
+    import imageHerobrine2 from "@/assets/Herobrine_2.png"
+    import imageHerobrine3 from "@/assets/Herobrine_3.png"
+
 
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -72,12 +93,13 @@
             return {
                 imageMatui: imageMatui,
                 imagePhotobox: imagePhotobox,
+                imageHerobrine: imageHerobrine,
                 infosMatui: {title: "ANNEE", description: "2021"},
                 contentMatui : {
                     num: ".01",
                     title: "MATIU",
                     subtitle : "Un outil d'aide à la décision",
-                    description : "Implémentation du diagramme MATUI, un arbre de décision version développer par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider les chercheurs en informatique à concevoir leurs expérimentations centrées humain."
+                    description : "Implémentation du diagramme MATUI, un arbre de décision développer par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider les chercheurs en informatique à concevoir leurs expérimentations centrées humain."
                 },
                 contentPhotobox : {
                     num: ".02",
@@ -85,7 +107,17 @@
                     subtitle : "Une application de partage de photos",
                     description : "Développement d'une application de partage de photos en direct dans le cadre d'un projet d'étude. Ce service propose à ses utilisateurs de partager l'instant présent lors d'événements et de les partager aux autres utilisateurs par l'intermédiaire d'un flux en direct."
                 },
-                screenPhotobox: [imagePhotobox1, imagePhotobox2, imagePhotobox3, imagePhotobox4, imagePhotobox5]
+                contentHerobrine : {
+                    num: ".03",
+                    title: "Herobrine",
+                    subtitle : "Une copie de Twitter",
+                    description : "Conception d'un site reprenant les fonctionnalités far de Twitter. Développement de l'aspect front-end uniquement, l'objectif est de découvrir de nouvelles technologies (ici Svelte). Le produit comporte les fonctionnalités premières des réseaux sociaux actuels."
+                },
+                screenPhotobox: [imagePhotobox1, imagePhotobox2, imagePhotobox3, imagePhotobox4, imagePhotobox5],
+                screenMatui: [imageMatui1, imageMatui2, imageMatui3, imageMatui4, imageMatui5, imageMatui6],
+                screenHerobrine: [imageHerobrine1, imageHerobrine2, imageHerobrine3]
+
+
             }
         },
 
@@ -95,6 +127,7 @@
             ThreeCanvasHero,
             ThreeCanvasMatui,
             ThreeCanvasPhotobox,
+            ThreeCanvasHerobrine,
             TheHeroSection,
             HomeSliderSection
         },
