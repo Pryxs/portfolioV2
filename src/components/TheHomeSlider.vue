@@ -99,7 +99,7 @@
                     num: ".01",
                     title: "MATIU",
                     subtitle : "Un outil d'aide à la décision",
-                    description : "Implémentation du diagramme MATUI, un arbre de décision développer par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider les chercheurs en informatique à concevoir leurs expérimentations centrées humain."
+                    description : "Implémentation du diagramme MATUI, un arbre de décision développé par des chercheurs du LIG (Laboratoire d'informatique de Grenoble) dont le but est d'aider les chercheurs en informatique à concevoir leurs expérimentations centrées humain."
                 },
                 contentPhotobox : {
                     num: ".02",
@@ -111,7 +111,7 @@
                     num: ".03",
                     title: "Herobrine",
                     subtitle : "Une copie de Twitter",
-                    description : "Conception d'un site reprenant les fonctionnalités far de Twitter. Développement de l'aspect front-end uniquement, l'objectif est de découvrir de nouvelles technologies (ici Svelte). Le produit comporte les fonctionnalités premières des réseaux sociaux actuels."
+                    description : "Conception d'un site reprenant les fonctionnalités phares de Twitter. Développement de l'aspect front-end uniquement, l'objectif est de découvrir de nouvelles technologies (ici Svelte). Le produit comporte les fonctionnalités premières des réseaux sociaux actuels."
                 },
                 screenPhotobox: [imagePhotobox1, imagePhotobox2, imagePhotobox3, imagePhotobox4, imagePhotobox5],
                 screenMatui: [imageMatui1, imageMatui2, imageMatui3, imageMatui4, imageMatui5, imageMatui6],

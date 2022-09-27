@@ -19,7 +19,7 @@ void main() {
   vec2 uvRandom = vUv;
   uvRandom.y *= random(vec2(uvRandom.y,amount));
   color.rgb = customColor;
-  color.rgb += random(uvRandom)*0.2;
+  color.rgb += random(uvRandom)*0.12;
   gl_FragColor = vec4( color );
 }
 `
