@@ -30,6 +30,10 @@ import { routeLocationKey } from 'vue-router';
         
             function closeModal() {
                 isShow.value = false;
+                gsap.to('.modal_close_bar',0,{height: 0, ease: "power2.easeIn"})
+                gsap.to('.-right', {rotation: -90, delay: 0, ease: "power2.easeInOut"})
+                gsap.to('.-left', {rotation: 90, delay: 0, ease: "power2.easeInOut"})
+                gsap.to('.modal_close_circle', {opacity: 0, delay: 0, ease: "power2.easeIn"})
             }
     
             return {
@@ -37,6 +41,10 @@ import { routeLocationKey } from 'vue-router';
                 showModal,
                 closeModal,
             };
+        },
+
+        mounted(){
+            console.log("mount")
         },
 
         updated(){
