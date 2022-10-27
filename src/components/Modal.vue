@@ -40,6 +40,7 @@ import { routeLocationKey } from 'vue-router';
         },
 
         updated(){
+            console.log("UPADTED");
             gsap.to('.modal_close_bar',0,{height: 40, ease: "power2.easeIn"})
             gsap.to('.-right', {rotation: -45, delay: .1, ease: "power2.easeInOut"})
             gsap.to('.-left', {rotation: 45, delay: .1, ease: "power2.easeInOut"})
