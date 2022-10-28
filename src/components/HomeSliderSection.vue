@@ -8,12 +8,12 @@
             <h2>{{content.title}}</h2>
             <h3>{{content.subtitle}}</h3>
             <p>{{content.description}}</p>
-            <!-- <div class="project_content_infos">
+            <div class="project_content_infos">
                 <div v-for="info in infos" class="project_content_infos -item">
+                    <component class="-item_icon" :is="info.icon"/>
                     <span class="-item_title">{{info.title}}</span>
-                    <span class="-item_description">{{info.description}}</span>
                 </div>
-            </div> -->
+            </div>
 
             <div class="project_content_action">
                 <CustomModal>
@@ -28,12 +28,30 @@
 
 <script> 
     import CustomModal from '@/components/Modal.vue'
+    import reactIcon from "@/assets/logos-react.svg?component"
+    import vueIcon from "@/assets/logos-vue.svg?component"
+    import svelteIcon from "@/assets/logos-svelte-icon.svg?component"
+    import phpIcon from "@/assets/logos-php.svg?component"
+    import laravelIcon from "@/assets/logos-laravel.svg?component"
+    import wordpressIcon from "@/assets/logos-wordpress-icon.svg?component"
+    import woocommerceIcon from "@/assets/logos-woocommerce-icon.svg?component"
+    import nativescriptIcon from "@/assets/logos-nativescript.svg?component"
+
+
 
     export default {
-        props: ['primaryColor', 'secondaryColor', 'content', 'screens'],
+        props: ['primaryColor', 'secondaryColor', 'content', 'screens', 'infos'],
 
         components:{
-            CustomModal
+            CustomModal,
+            reactIcon,
+            vueIcon,
+            svelteIcon,
+            phpIcon,
+            laravelIcon,
+            wordpressIcon,
+            woocommerceIcon,
+            nativescriptIcon
         },
 
         computed: {
@@ -110,23 +128,24 @@
                 margin-bottom: 2rem;
             }
 
-            // &_infos{
-            //     .-item{
-            //         display: flex;
+            &_infos{
+                .-item{
+                    display: grid;
+                    gap: .8rem;
+                    grid-template-columns: 2rem 1fr;
+                    margin-bottom: .7rem;
 
-            //         &_title{
-            //             font-family: 'Trirong';
-            //             margin-right: 1em;
-            //             color: $matui-secondary-color;
-            //         }
+                    &_title{
+                        font-family: 'Trirong';
+                        color: $text-color;
+                    }
 
-            //         &_description{
-            //             font-family: 'Trirong';
-            //             color: $matui-secondary-color;
-
-            //         }
-            //     }
-            // }
+                    &_icon{
+                        height: 1rem;
+                        justify-self: end;
+                    }
+                }
+            }
 
             &_action{
                 width: 100%;

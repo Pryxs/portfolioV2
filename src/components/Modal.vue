@@ -16,9 +16,8 @@
 </template>
 
 <script>
-    import { defineComponent, ref } from 'vue';
+    import { defineComponent, onUpdated, ref } from 'vue';
     import gsap from "gsap";
-import { routeLocationKey } from 'vue-router';
 
     export default defineComponent({
         setup() {
@@ -30,10 +29,6 @@ import { routeLocationKey } from 'vue-router';
         
             function closeModal() {
                 isShow.value = false;
-                gsap.to('.modal_close_bar',0,{height: 0, ease: "power2.easeIn"})
-                gsap.to('.-right', {rotation: -90, delay: 0, ease: "power2.easeInOut"})
-                gsap.to('.-left', {rotation: 90, delay: 0, ease: "power2.easeInOut"})
-                gsap.to('.modal_close_circle', {opacity: 0, delay: 0, ease: "power2.easeIn"})
             }
     
             return {
@@ -43,23 +38,19 @@ import { routeLocationKey } from 'vue-router';
             };
         },
 
-        mounted(){
-            console.log("mount")
-        },
-
         updated(){
             console.log("UPADTED");
-            gsap.to('.modal_close_bar',0,{height: 40, ease: "power2.easeIn"})
-            gsap.to('.-right', {rotation: -45, delay: .1, ease: "power2.easeInOut"})
-            gsap.to('.-left', {rotation: 45, delay: .1, ease: "power2.easeInOut"})
-            gsap.to('.modal_close_circle', {opacity: 1, delay: .2, duration: .6, ease: "power2.easeIn"})
+            gsap.to('#test>.modal_close_bar',0,{height: 40, ease: "power2.easeIn"})
+            gsap.to('#test>.-right', {rotation: -45, delay: .1, ease: "power2.easeInOut"})
+            gsap.to('#test>.-left', {rotation: 45, delay: .1, ease: "power2.easeInOut"})
+            gsap.to('#test>.modal_close_circle', {opacity: 1, delay: .2, duration: .6, ease: "power2.easeIn"})
         },
 
         methods:{
             horizontalScroll :function(event){
                 let modal = document.querySelector('.modal');
                 modal.scrollLeft += event.deltaY + 20;
-            }
+            },
         }
     });
 </script>

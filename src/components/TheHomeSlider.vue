@@ -25,7 +25,7 @@
                 <ThreeCanvasMatui customRef="canvas2" color="rgba(0, 122, 204)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <HomeSliderSection :infos="infosMatui" primaryColor="#8340af" secondaryColor="#e1bbfa" :content="contentPhotobox" :screens="screenPhotobox">
+                <HomeSliderSection :infos="infosPhotobox" primaryColor="#8340af" secondaryColor="#e1bbfa" :content="contentPhotobox" :screens="screenPhotobox">
                     <template v-slot:image>
                         <img :src="imagePhotobox">
                     </template>
@@ -33,12 +33,20 @@
                 <ThreeCanvasPhotobox customRef="canvas2" color="rgba(131, 64, 175)"/>
             </swiper-slide>
             <swiper-slide class="swiper_slide">
-                <HomeSliderSection :infos="infosMatui" primaryColor="#059C80" secondaryColor="#B5FFD2" :content="contentHerobrine" :screens="screenHerobrine">
+                <HomeSliderSection :infos="infosHerobrine" primaryColor="#059C80" secondaryColor="#B5FFD2" :content="contentHerobrine" :screens="screenHerobrine">
                     <template v-slot:image>
                         <img :src="imageHerobrine">
                     </template>
                 </HomeSliderSection>
                 <ThreeCanvasHerobrine customRef="canvas2" color="rgba(5, 166, 135)"/>
+            </swiper-slide>
+            <swiper-slide class="swiper_slide">
+                <HomeSliderSection :infos="infosFortesens" primaryColor="#d55753" secondaryColor="#FEB6BD" :content="contentFortesens" :screens="screenFortesens">
+                    <template v-slot:image>
+                        <img :src="imageFortesens">
+                    </template>
+                </HomeSliderSection>
+                <ThreeCanvasFortesens customRef="canvas2" color="rgba(213, 87, 83)"/>
             </swiper-slide>
             <!-- <div class="swiper_navigation">
                 <button class="swiper_navigation_prev">PREV</button>
@@ -56,12 +64,14 @@
     import ThreeCanvasMatui from '@/components/ThreeCanvas/ThreeCanvasMatui.vue';
     import ThreeCanvasPhotobox from '@/components/ThreeCanvas/ThreeCanvasPhotobox.vue';
     import ThreeCanvasHerobrine from '@/components/ThreeCanvas/ThreeCanvasHerobrine.vue';
+    import ThreeCanvasFortesens from '@/components/ThreeCanvas/ThreeCanvasFortesens.vue';
     import TheHeroSection from '@/components/TheHeroSection.vue';
     import HomeSliderSection from '@/components/HomeSliderSection.vue';
 
     import imageMatui from "@/assets/MATUI_MockUp.png"
     import imagePhotobox from "@/assets/Photobox_MockUp.png"
     import imageHerobrine from "@/assets/Herobrine_MockUp.png"
+    import imageFortesens from "@/assets/Fortesens_MockUp.png"
 
     import imagePhotobox1 from "@/assets/Photobox_1.png"
     import imagePhotobox2 from "@/assets/Photobox_2.png"
@@ -76,10 +86,15 @@
     import imageMatui5 from "@/assets/MATUI_5.png"
     import imageMatui6 from "@/assets/MATUI_6.png"
 
+    import imageFortesens1 from "@/assets/Fortesens_1.png"
+    import imageFortesens2 from "@/assets/Fortesens_2.png"
+    import imageFortesens3 from "@/assets/Fortesens_3.png"
+    import imageFortesens4 from "@/assets/Fortesens_4.png"
+
+
     import imageHerobrine1 from "@/assets/Herobrine_1.png"
     import imageHerobrine2 from "@/assets/Herobrine_2.png"
     import imageHerobrine3 from "@/assets/Herobrine_3.png"
-
 
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -94,7 +109,11 @@
                 imageMatui: imageMatui,
                 imagePhotobox: imagePhotobox,
                 imageHerobrine: imageHerobrine,
-                infosMatui: {title: "ANNEE", description: "2021"},
+                imageFortesens: imageFortesens,
+                infosMatui: [{title : 'ReactJS', icon : 'reactIcon'}, {title : 'PHP', icon : 'phpIcon'}],
+                infosPhotobox: [{title : 'VueJS', icon : 'vueIcon'}, {title : 'Laravel', icon : 'laravelIcon'}, {title : 'NativeScript', icon : 'nativescriptIcon'}],
+                infosHerobrine: [{title : 'Svelte', icon : 'svelteIcon'}],
+                infosFortesens: [{title : 'Wordpress', icon : 'wordpressIcon'}, {title : 'Woocommerce', icon : 'woocommerceIcon'}],
                 contentMatui : {
                     num: ".01",
                     title: "MATIU",
@@ -113,11 +132,16 @@
                     subtitle : "Une copie de Twitter",
                     description : "Conception d'un site reprenant les fonctionnalités phares de Twitter. Développement de l'aspect front-end uniquement, l'objectif est de découvrir de nouvelles technologies (ici Svelte). Le produit comporte les fonctionnalités premières des réseaux sociaux actuels."
                 },
+                contentFortesens : {
+                    num: ".04",
+                    title: "Fortesens",
+                    subtitle : "Boutique en ligne",
+                    description : "Implémentation d'une boutique en ligne pour la boutique Fortesens. Issu d'un thème personnalisé Wordpress l'intégration de cette fonctionnalité s'est porté sur Woocommerce. Nécessitant l'ajout et la modification de certains comportements en fonction des besoins."
+                },
                 screenPhotobox: [imagePhotobox1, imagePhotobox2, imagePhotobox3, imagePhotobox4, imagePhotobox5],
                 screenMatui: [imageMatui1, imageMatui2, imageMatui3, imageMatui4, imageMatui5, imageMatui6],
-                screenHerobrine: [imageHerobrine1, imageHerobrine2, imageHerobrine3]
-
-
+                screenHerobrine: [imageHerobrine1, imageHerobrine2, imageHerobrine3],
+                screenFortesens: [imageFortesens1, imageFortesens2, imageFortesens3, imageFortesens4]
             }
         },
 
@@ -128,8 +152,9 @@
             ThreeCanvasMatui,
             ThreeCanvasPhotobox,
             ThreeCanvasHerobrine,
+            ThreeCanvasFortesens,
             TheHeroSection,
-            HomeSliderSection
+            HomeSliderSection,
         },
 
         setup() {
@@ -162,7 +187,7 @@
             &-pagination{
                 display: flex;
                 flex-direction: column;
-                gap: 4rem;
+                gap: 3rem;
                 right: 3rem;
 
                 &-bullet{

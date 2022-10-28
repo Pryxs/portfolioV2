@@ -26,14 +26,14 @@
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mousedown", onMouseHover);
         document.addEventListener("mouseup", onMouseHoverOut);
-        document.addEventListener("mouseenter", () => {
-          cursorRing.style.opacity = 1;
-          cursorBall.style.opacity = 1;
-        });
-        document.addEventListener("mouseleave", () => {
-          cursorRing.style.opacity = 0;
-          cursorBall.style.opacity = 0;
-        });
+        // document.addEventListener("mouseenter", () => {
+        //   cursorRing.style.opacity = 1;
+        //   cursorBall.style.opacity = 1;
+        // });
+        // document.addEventListener("mouseleave", () => {
+        //   cursorRing.style.opacity = 0;
+        //   cursorBall.style.opacity = 0;
+        // });
         for (const element of withHover) {
           element.addEventListener("mouseover", onMouseHover);
           element.addEventListener("mouseout", onMouseHoverOut);
@@ -100,6 +100,7 @@
           border: 1px solid $text-color;
           border-radius: 50%;
           z-index: 50;
+          opacity: 1;
         }
 
         &.-ball{
