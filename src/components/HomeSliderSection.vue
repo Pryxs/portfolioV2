@@ -97,7 +97,7 @@
             justify-content: center;
 
             img{
-                transform: rotate3d(0,1,0,15deg);
+                transform: rotate3d(0,1,0,10deg);
                 width: auto;
                 height: 100%;
                 max-height: 450px;
