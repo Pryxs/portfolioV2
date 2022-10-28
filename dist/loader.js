@@ -33,7 +33,7 @@ async function plugEvent() {
     // quand la page est chargé on fini l'animation
     window.onload = (event) => {
         timeline.to(".loader_heading", {
-            delay: 3,
+            delay: 1.5,
             y: -200,
             opacity: 0,
         });
